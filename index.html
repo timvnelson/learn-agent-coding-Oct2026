@@ -7,11 +7,54 @@
 </head>
 <body>
   <h1>hello world</h1>
-  <p>Lines kept on one page. Change any of them, save, and refresh.</p>
-  <ul>
-    <li>Rewrite the heading</li>
-    <li>Add a new line to this list</li>
-    <li>Change a word in the paragraph</li>
-  </ul>
+  <p id="about">Loading the sentence from about.txt.</p>
+  <ul id="notes"></ul>
+  <script>
+    // Put the text of about.txt into the paragraph.
+    fetch("about.txt")
+      .then(function (response) {
+        return response.text();
+      })
+      .then(function (text) {
+        document.getElementById("about").textContent = text.trim();
+      })
+      .catch(function () {
+        document.getElementById("about").textContent = "Could not read about.txt.";
+      });
+
+    // Build the list from notes.csv.
+    // The first line is the header. Every later line is done,text.
+    // Split on the first comma, so the note itself may contain a comma.
+    fetch("notes.csv")
+      .then(function (response) {
+        return response.text();
+      })
+      .then(function (text) {
+        var list = document.getElementById("notes");
+        var lines = text.trim().split("\n");
+        var i;
+        for (i = 1; i < lines.length; i++) {
+          var line = lines[i];
+          var comma = line.indexOf(",");
+          var done = line.slice(0, comma).trim();
+          var note = line.slice(comma + 1);
+          var item = document.createElement("li");
+          var box = document.createElement("input");
+          box.type = "checkbox";
+          box.disabled = true;
+          if (done === "yes") {
+            box.setAttribute("checked", "checked");
+          }
+          item.appendChild(box);
+          item.appendChild(document.createTextNode(" " + note));
+          list.appendChild(item);
+        }
+      })
+      .catch(function () {
+        var item = document.createElement("li");
+        item.textContent = "Could not read notes.csv.";
+        document.getElementById("notes").appendChild(item);
+      });
+  </script>
 </body>
 </html>
