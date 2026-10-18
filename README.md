@@ -1,19 +1,20 @@
 # Scratch
 
-A plain HTML page. The heading is written in `index.html`. The other words come from other files.
+A plain HTML page. The heading is written in `sites/index.html`. The other words come from other files in that same folder.
 
 ## Files
 
-- `index.html` is the page. The `<title>` is the browser tab text. The `<h1>` is the heading. A short script reads the two files below and fills in the paragraph and the list.
-- `about.txt` is the paragraph under the heading. Change the sentence, save, and refresh.
-- `notes.csv` is the list. The first row is the header `done,text`. Each later row is one item. `no` means not done, and `yes` means done. The script splits on the first comma, so a note may contain a comma.
+- `sites/index.html` is the page. The `<title>` is the browser tab text. The `<h1>` is the heading. A short script reads the two files below and fills in the paragraph and the list.
+- `sites/about.txt` is the text under the heading. A blank line starts a new paragraph. Change it, save, and refresh.
+- `sites/notes.csv` is the list. The first row is the header `done,text`. Each later row is one item. `no` means not done, and `yes` means done. The script splits on the first comma, so a note may contain a comma.
+- `AGENTS.md` is notes for an agent. It is outside `sites`, so the Python server does not serve it.
 
 ## Run it
 
 From this folder:
 
 ```
-python3 -m http.server 43117
+python3 -m http.server 43117 --directory sites
 ```
 
 Open http://127.0.0.1:43117

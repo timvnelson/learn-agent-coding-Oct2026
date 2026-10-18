@@ -7,16 +7,26 @@
 </head>
 <body>
   <h1>hello world</h1>
-  <p id="about">Loading the sentence from about.txt.</p>
+  <div id="about">
+    <p>Loading the sentence from about.txt.</p>
+  </div>
   <ul id="notes"></ul>
   <script>
-    // Put the text of about.txt into the paragraph.
+    // Put about.txt on the page. A blank line in the file starts a new paragraph.
     fetch("about.txt")
       .then(function (response) {
         return response.text();
       })
       .then(function (text) {
-        document.getElementById("about").textContent = text.trim();
+        var about = document.getElementById("about");
+        var paragraphs = text.trim().split(/\n\s*\n/);
+        var i;
+        about.innerHTML = "";
+        for (i = 0; i < paragraphs.length; i++) {
+          var p = document.createElement("p");
+          p.textContent = paragraphs[i].replace(/\s+/g, " ").trim();
+          about.appendChild(p);
+        }
       })
       .catch(function () {
         document.getElementById("about").textContent = "Could not read about.txt.";
