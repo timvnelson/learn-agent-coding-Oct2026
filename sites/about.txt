@@ -3,3 +3,5 @@ Why do programmers prefer dark mode? Because light attracts bugs.
 A git commit walks into a bar. The bartender asks, "What'll it be?" The commit says, "I'll have whatever's HEAD."
 
 Why did the developer go broke? Because they used up all their cache.
+
+A priest, a developer and a snake walk into a bar.  Who go there first?  Priest because he had nowhere to go.
