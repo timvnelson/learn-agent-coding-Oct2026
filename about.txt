@@ -1,1 +1,1 @@
-Lines kept on one page. This sentence is the whole of about.txt. Change it, save, and refresh.
+Lines kept on one page. This sentence is the whole thing of about.txt. Change it, save, and refresh.
