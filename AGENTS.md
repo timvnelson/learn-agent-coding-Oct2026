@@ -33,7 +33,8 @@ Opening `index.html` from the disk leaves the paragraph and the list empty, beca
 ## Phases
 
 - Phase 1 and Phase 2 are done. The page is plain HTML, and the paragraph and list come from files.
-- Phase 3 is GitHub. The repository exists: `timvnelson/learn-agent-coding-Oct2026`, private. Commits, branches, and pull requests all happen there now. A CI test runs on every push and pull request: `.github/workflows/test.yml` checks that `sites/index.html` still has the expected `<h1>` line. If the heading text changes on purpose, update the `grep` line in that workflow to match, or the check will fail.
+- Phase 3 is GitHub. The repository exists: `timvnelson/learn-agent-coding-Oct2026`, **public** (changed from private so branch protection would actually enforce — see below; GitHub does not enforce branch protection on a private repo without a paid plan). Commits, branches, and pull requests all happen there now. A CI test runs on every push and pull request: `.github/workflows/test.yml` checks that `sites/index.html` still has the expected `<h1>` line. If the heading text changes on purpose, update the `grep` line in that workflow to match, or the check will fail.
+- `main` is protected by a GitHub **Ruleset** (Settings → Rulesets): requires a pull request before merging, requires the `check-heading` status check to pass, blocks force pushes, restricts deletions. Confirmed working two ways: a direct commit through GitHub's web editor was blocked, and a direct write via the GitHub API (the same connection this agent uses) was rejected with "Repository rule violations found."
 - Phase 4 is Coolify, after GitHub. `http://66.179.209.175:8000` is the Coolify dashboard, not the public page. A deploy gets its own address.
 
 ### Phase 4 status (done)
@@ -48,7 +49,6 @@ Coolify is set up and working:
 ### Next experiments (not started, for whenever the user wants to try them)
 
 - **Add a real domain and HTTPS to Coolify**, instead of the `sslip.io` address. Beyond the obvious benefit, this should also fix the "Cannot connect to real-time service" quirk above: once the dashboard is reached through a domain, Coolify's reverse proxy routes the real-time connection through ports 80/443 alongside everything else, instead of a separate raw-IP websocket connection that ad blockers tend to flag. Afterward, ports 6001, 6002, and 8000 can likely be closed to the public entirely.
-- **Set up branch protection on `main`** in the GitHub repo settings (`Require a pull request before merging`, plus requiring the CI status check to pass). This is the step that actually enforces "always go through a PR" instead of relying on habit.
 - **Practice a real merge conflict on purpose** — edit the same line of a file on two branches and resolve the conflict by hand. Everything merged so far has gone cleanly, so this hasn't come up yet.
 - **Permanently fix the real-time websocket ports properly**, if the domain/HTTPS route above isn't done first — this was diagnosed down to "likely the browser's ad blocker," but never conclusively fixed.
 
