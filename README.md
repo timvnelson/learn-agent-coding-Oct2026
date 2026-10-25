@@ -20,3 +20,7 @@ python3 -m http.server 43117 --directory sites
 Open http://127.0.0.1:43117
 
 The script can read the other files only when the page is served this way. Opening `index.html` straight from the disk leaves the paragraph and the list empty.
+
+## GitHub and CI
+
+The project lives at `timvnelson/learn-agent-coding-Oct2026` on GitHub. Changes go in through pull requests. A small automated check runs on every push and pull request: it confirms `sites/index.html` still has the expected `<h1>` heading. See `.github/workflows/test.yml`.
