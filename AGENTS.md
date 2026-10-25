@@ -36,6 +36,15 @@ Opening `index.html` from the disk leaves the paragraph and the list empty, beca
 - Phase 3 is GitHub. The repository exists: `timvnelson/learn-agent-coding-Oct2026`, private. Commits, branches, and pull requests all happen there now. A CI test runs on every push and pull request: `.github/workflows/test.yml` checks that `sites/index.html` still has the expected `<h1>` line. If the heading text changes on purpose, update the `grep` line in that workflow to match, or the check will fail.
 - Phase 4 is Coolify, after GitHub. `http://66.179.209.175:8000` is the Coolify dashboard, not the public page. Do not contact that server until the user asks. A deploy would get its own address.
 
+### Phase 4 status (started, not finished)
+
+The user decided on a plan but has not started clicking through it yet. Whichever agent picks this up next (Cursor or a cloud agent) should pick up from here, not re-ask the questions already settled:
+
+- **What to set up:** Coolify's GitHub App integration, with Preview Deployments turned on. This builds a live, temporary deploy for each open pull request, with its own URL, so the user can click and view it before merging — separate from the GitHub Actions CI test, which still runs and shows pass/fail on the same PR.
+- **How to set it up:** the user chose to click through Coolify's dashboard themselves, with the agent guiding step by step (describe what you see, agent says what's next). No Coolify credentials or tokens should be requested from or typed into the agent — this was a deliberate choice, not an oversight.
+- **Known complication:** this project has no `Dockerfile` and no Node/package build config — it is a plain folder served by Python's `http.server`. Coolify will likely need either a small `Dockerfile` written for it, or its static-site option pointed at `sites/`. Expect this to take more than one try.
+- **Not started yet:** nobody has logged into the Coolify dashboard for this as of this note. Start at "log into Coolify, find the GitHub integration settings."
+
 ## Git
 
 The user is learning Git and often wants to type `git add`, `git commit`, and `git push` themselves. A change in a file is not a commit. A commit on the cloud machine is not on the remote copy until `git push`. `main` and `origin/main` are the same branch in two places: here, and Cursor's remote copy.
