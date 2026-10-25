@@ -34,16 +34,23 @@ Opening `index.html` from the disk leaves the paragraph and the list empty, beca
 
 - Phase 1 and Phase 2 are done. The page is plain HTML, and the paragraph and list come from files.
 - Phase 3 is GitHub. The repository exists: `timvnelson/learn-agent-coding-Oct2026`, private. Commits, branches, and pull requests all happen there now. A CI test runs on every push and pull request: `.github/workflows/test.yml` checks that `sites/index.html` still has the expected `<h1>` line. If the heading text changes on purpose, update the `grep` line in that workflow to match, or the check will fail.
-- Phase 4 is Coolify, after GitHub. `http://66.179.209.175:8000` is the Coolify dashboard, not the public page. Do not contact that server until the user asks. A deploy would get its own address.
+- Phase 4 is Coolify, after GitHub. `http://66.179.209.175:8000` is the Coolify dashboard, not the public page. A deploy gets its own address.
 
-### Phase 4 status (started, not finished)
+### Phase 4 status (done)
 
-The user decided on a plan but has not started clicking through it yet. Whichever agent picks this up next (Cursor or a cloud agent) should pick up from here, not re-ask the questions already settled:
+Coolify is set up and working:
 
-- **What to set up:** Coolify's GitHub App integration, with Preview Deployments turned on. This builds a live, temporary deploy for each open pull request, with its own URL, so the user can click and view it before merging — separate from the GitHub Actions CI test, which still runs and shows pass/fail on the same PR.
-- **How to set it up:** the user chose to click through Coolify's dashboard themselves, with the agent guiding step by step (describe what you see, agent says what's next). No Coolify credentials or tokens should be requested from or typed into the agent — this was a deliberate choice, not an oversight.
-- **Known complication:** this project has no `Dockerfile` and no Node/package build config — it is a plain folder served by Python's `http.server`. Coolify will likely need either a small `Dockerfile` written for it, or its static-site option pointed at `sites/`. Expect this to take more than one try.
-- **Not started yet:** nobody has logged into the Coolify dashboard for this as of this note. Start at "log into Coolify, find the GitHub integration settings."
+- **How it is set up:** a Coolify GitHub App integration (name `vivacious-vulture-9fyz93jdx0gh` in Coolify) is connected to `timvnelson/learn-agent-coding-Oct2026`. The application uses the **Static** build pack, base directory `/sites`, web server `nginx:alpine` — not the project's own Python server. No Dockerfile was needed.
+- **Production page:** pushes to `main` auto-deploy to `http://a3rpxrrt2enquwxubsymwqmz.66.179.209.175.sslip.io` (a free wildcard-DNS address standing in for a real domain).
+- **Preview Deployments are on.** Opening a pull request builds a separate, temporary preview at a `{{pr_id}}.<same sslip.io host>` address, so the user can view the change live before merging — confirmed working on pull request #10.
+- **Known quirk, not a bug:** the Coolify dashboard sometimes shows "Cannot connect to real-time service." Ports 6001/6002 are correctly open (confirmed from both the server and an external port checker); the likely cause is a browser ad blocker flagging the websocket connection to a raw IP. Disabling the ad blocker for that site is the workaround in use. See "Next experiments" below for the real fix.
+
+### Next experiments (not started, for whenever the user wants to try them)
+
+- **Add a real domain and HTTPS to Coolify**, instead of the `sslip.io` address. Beyond the obvious benefit, this should also fix the "Cannot connect to real-time service" quirk above: once the dashboard is reached through a domain, Coolify's reverse proxy routes the real-time connection through ports 80/443 alongside everything else, instead of a separate raw-IP websocket connection that ad blockers tend to flag. Afterward, ports 6001, 6002, and 8000 can likely be closed to the public entirely.
+- **Set up branch protection on `main`** in the GitHub repo settings (`Require a pull request before merging`, plus requiring the CI status check to pass). This is the step that actually enforces "always go through a PR" instead of relying on habit.
+- **Practice a real merge conflict on purpose** — edit the same line of a file on two branches and resolve the conflict by hand. Everything merged so far has gone cleanly, so this hasn't come up yet.
+- **Permanently fix the real-time websocket ports properly**, if the domain/HTTPS route above isn't done first — this was diagnosed down to "likely the browser's ad blocker," but never conclusively fixed.
 
 ## Git
 
