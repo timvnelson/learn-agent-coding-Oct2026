@@ -11,4 +11,4 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Check that the heading is still there
-        run: grep -F "<h1>hello world</h1>" sites/index.html
+        run: grep -F "<h1>hello world friends</h1>" sites/index.html
