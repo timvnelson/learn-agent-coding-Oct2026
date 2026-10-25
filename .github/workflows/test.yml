@@ -1,0 +1,14 @@
+name: Test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  check-heading:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check that the heading is still there
+        run: grep -F "<h1>hello world</h1>" sites/index.html
