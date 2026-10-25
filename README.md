@@ -23,7 +23,9 @@ The script can read the other files only when the page is served this way. Openi
 
 ## GitHub and CI
 
-The project lives at `timvnelson/learn-agent-coding-Oct2026` on GitHub. Changes go in through pull requests. A small automated check runs on every push and pull request: it confirms `sites/index.html` still has the expected `<h1>` heading. See `.github/workflows/test.yml`.
+The project lives at `timvnelson/learn-agent-coding-Oct2026` on GitHub, public. Changes go in through pull requests. A small automated check runs on every push and pull request: it confirms `sites/index.html` still has the expected `<h1>` heading. See `.github/workflows/test.yml`.
+
+`main` is protected by a GitHub Ruleset: a pull request is required, the check above must pass, and force pushes/deletions are blocked. Confirmed by testing that a direct commit to `main` through GitHub's web editor gets blocked.
 
 ## Coolify
 
@@ -31,4 +33,4 @@ The page auto-deploys from `main` to `http://a3rpxrrt2enquwxubsymwqmz.66.179.209
 
 ## Next experiments
 
-A few things not started yet — see "Next experiments" in `AGENTS.md` for details: a real domain and HTTPS for Coolify, branch protection on `main`, practicing a real merge conflict, and a permanent fix for a websocket warning currently worked around by disabling an ad blocker.
+A few things not started yet — see "Next experiments" in `AGENTS.md` for details: a real domain and HTTPS for Coolify, practicing a real merge conflict, and a permanent fix for a websocket warning currently worked around by disabling an ad blocker.
