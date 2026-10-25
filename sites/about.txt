@@ -5,3 +5,5 @@ A git commit walks into a bar. The bartender asks, "What'll it be?" The commit s
 Why did the developer go broke? Because they used up all their cache.
 
 A priest, a developer and a snake walk into a bar.  Who go there first?  Priest because he had nowhere to go.
+
+There are 10 types of people in the world: those who understand binary, and those who don't.
