@@ -24,3 +24,7 @@ The script can read the other files only when the page is served this way. Openi
 ## GitHub and CI
 
 The project lives at `timvnelson/learn-agent-coding-Oct2026` on GitHub. Changes go in through pull requests. A small automated check runs on every push and pull request: it confirms `sites/index.html` still has the expected `<h1>` heading. See `.github/workflows/test.yml`.
+
+## Next up: Coolify (not started)
+
+The plan is Coolify's GitHub App integration with Preview Deployments on, so each pull request gets its own clickable preview before merging. Not started yet — see "Phase 4 status" in `AGENTS.md` for exactly where this was left off.
