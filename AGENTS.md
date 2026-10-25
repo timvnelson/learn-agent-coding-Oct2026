@@ -33,12 +33,18 @@ Opening `index.html` from the disk leaves the paragraph and the list empty, beca
 ## Phases
 
 - Phase 1 and Phase 2 are done. The page is plain HTML, and the paragraph and list come from files.
-- Phase 3 is GitHub. The project is not on GitHub yet. When the user asks, create the repository, then show a commit, a branch, and a pull request. A small automated test (CI) can check that the page has the expected heading. That test is part of Phase 3.
+- Phase 3 is GitHub. The repository exists: `timvnelson/learn-agent-coding-Oct2026`, private. Commits, branches, and pull requests all happen there now. A CI test runs on every push and pull request: `.github/workflows/test.yml` checks that `sites/index.html` still has the expected `<h1>` line. If the heading text changes on purpose, update the `grep` line in that workflow to match, or the check will fail.
 - Phase 4 is Coolify, after GitHub. `http://66.179.209.175:8000` is the Coolify dashboard, not the public page. Do not contact that server until the user asks. A deploy would get its own address.
 
 ## Git
 
 The user is learning Git and often wants to type `git add`, `git commit`, and `git push` themselves. A change in a file is not a commit. A commit on the cloud machine is not on the remote copy until `git push`. `main` and `origin/main` are the same branch in two places: here, and Cursor's remote copy.
+
+Three things can change this repo: this cloud agent, Cursor (including edits Cursor makes straight on the GitHub website), and the user typing Git commands directly. Pull `main` before starting new work if any of those might have moved it.
+
+## Pull requests and this agent's branch
+
+This cloud agent's branch is `claude/intelligent-fermi-spdl22`. Pull requests go through GitHub, not plain `git merge`, so the work is visible and the CI test runs first. Once a pull request for this branch is merged, the branch is done — pushing more commits to it will not reopen or update that pull request. Before starting the next change, reset the branch from the latest `main` first, then make the change and push; a new pull request covers that new work.
 
 ## How to answer
 
