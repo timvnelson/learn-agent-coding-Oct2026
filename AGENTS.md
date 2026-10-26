@@ -46,11 +46,17 @@ Coolify is set up and working:
 - **Preview Deployments are on.** Opening a pull request builds a separate, temporary preview at a `{{pr_id}}.<same sslip.io host>` address, so the user can view the change live before merging — confirmed working on pull request #10.
 - **Known quirk, not a bug:** the Coolify dashboard sometimes shows "Cannot connect to real-time service." Ports 6001/6002 are correctly open (confirmed from both the server and an external port checker); the likely cause is a browser ad blocker flagging the websocket connection to a raw IP. Disabling the ad blocker for that site is the workaround in use. See "Next experiments" below for the real fix.
 
+### Real domain for Coolify (in progress, paused — DNSSEC broke email, waiting ~48h)
+
+Two subdomains of `timvnelson.com` (registered at DreamHost, which also hosts its DNS) were set up to point at `66.179.209.175`: `learn-agents.timvnelson.com` (the public page) and `coolify.timvnelson.com` (the Coolify dashboard itself, via its Instance Domain setting). Both are configured correctly in Coolify and in DreamHost's DNS records, but neither was confirmed loading yet when this was paused.
+
+- **Real blocker found along the way:** `timvnelson.com` has a broken DNSSEC setup — a DS record exists at the registry level with nothing on DreamHost's nameservers able to sign for it (DreamHost's own nameservers do not support DNSSEC signing at all; it requires moving to an external DNS host, which the user does not want to do right now). This causes every DNSSEC-validating resolver (Google's, and apparently the user's own) to refuse to resolve **anything** under `timvnelson.com` — not just the new subdomains. Confirmed by querying `https://dns.google/resolve?name=timvnelson.com` (returns `Status: 2`, "DNSSEC validation failure"), and bypassing it by adding `&cd=true` to that same query, which shows the real, current records underneath.
+- **While hunting for the DS record to remove it, the user accidentally deleted the domain's MX and TXT records** (confirmed gone via the same `cd=true` DNS-over-HTTPS trick). This broke email on `@timvnelson.com`, unrelated to the DNSSEC problem itself. DreamHost support was not yet contacted about restoring them as of this note; the email provider used for the address was not identified either — either of those would be the fastest way to fix the email side, independent of the DNSSEC fix.
+- **Decision:** wait roughly 48 hours and recheck everything (DNS, email, DNSSEC) rather than keep digging live. Whoever picks this up next should re-run the `cd=true` DNS-over-HTTPS check above before assuming anything is still broken or still fixed.
+
 ### Next experiments (not started, for whenever the user wants to try them)
 
-- **Add a real domain and HTTPS to Coolify**, instead of the `sslip.io` address. Beyond the obvious benefit, this should also fix the "Cannot connect to real-time service" quirk above: once the dashboard is reached through a domain, Coolify's reverse proxy routes the real-time connection through ports 80/443 alongside everything else, instead of a separate raw-IP websocket connection that ad blockers tend to flag. Afterward, ports 6001, 6002, and 8000 can likely be closed to the public entirely.
 - **Practice a real merge conflict on purpose** — edit the same line of a file on two branches and resolve the conflict by hand. Everything merged so far has gone cleanly, so this hasn't come up yet.
-- **Permanently fix the real-time websocket ports properly**, if the domain/HTTPS route above isn't done first — this was diagnosed down to "likely the browser's ad blocker," but never conclusively fixed.
 
 ## Git
 
