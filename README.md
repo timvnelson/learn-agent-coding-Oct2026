@@ -31,6 +31,10 @@ The project lives at `timvnelson/learn-agent-coding-Oct2026` on GitHub, public. 
 
 The page auto-deploys from `main` to `http://a3rpxrrt2enquwxubsymwqmz.66.179.209.175.sslip.io`. Every pull request also gets its own live preview deployment at a similar address, so a change can be viewed before merging. See "Phase 4 status" in `AGENTS.md` for the setup details.
 
+## Real domain (in progress, paused)
+
+Setting up `learn-agents.timvnelson.com` and `coolify.timvnelson.com` uncovered a broken DNSSEC setup on `timvnelson.com` itself, and an accidental deletion of its email (MX/TXT) records while investigating. Both are unresolved as of this note; see "Real domain for Coolify" in `AGENTS.md` for the full details and how to check current status.
+
 ## Next experiments
 
-A few things not started yet — see "Next experiments" in `AGENTS.md` for details: a real domain and HTTPS for Coolify, practicing a real merge conflict, and a permanent fix for a websocket warning currently worked around by disabling an ad blocker.
+A few things not started yet — see "Next experiments" in `AGENTS.md` for details: practicing a real merge conflict, and a permanent fix for a websocket warning currently worked around by disabling an ad blocker.
