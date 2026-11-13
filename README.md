@@ -7,6 +7,7 @@ A plain HTML page. The heading is written in `sites/index.html`. The other words
 - `sites/index.html` is the page. The `<title>` is the browser tab text. The `<h1>` is the heading. A short script reads the two files below and fills in the paragraph and the list.
 - `sites/about.txt` is the text under the heading. A blank line starts a new paragraph. Change it, save, and refresh.
 - `sites/notes.csv` is the list. The first row is the header `done,text`. Each later row is one item. `no` means not done, and `yes` means done. The script splits on the first comma, so a note may contain a comma.
+- `sites/whitedoverelease-clone.html` is a separate, standalone page — a practice clone of `whitedoverelease.com`'s front page. It is not linked from `index.html`; open it directly.
 - `AGENTS.md` is notes for an agent. It is outside `sites`, so the Python server does not serve it.
 
 ## Run it
@@ -35,6 +36,12 @@ The page auto-deploys from `main` to `http://a3rpxrrt2enquwxubsymwqmz.66.179.209
 
 Setting up `learn-agents.timvnelson.com` and `coolify.timvnelson.com` uncovered a broken DNSSEC setup on `timvnelson.com` itself, and an accidental deletion of its email (MX/TXT) records while investigating. Both are unresolved as of this note; see "Real domain for Coolify" in `AGENTS.md` for the full details and how to check current status.
 
-## Next experiments
+## Merge conflict practice
 
-A few things not started yet — see "Next experiments" in `AGENTS.md` for details: practicing a real merge conflict, and a permanent fix for a websocket warning currently worked around by disabling an ad blocker.
+Done as a local-only exercise (two throwaway branches, a real conflict, resolved by hand) — never pushed to GitHub, no lasting change to the repo. See "Merge conflict practice" in `AGENTS.md`.
+
+## Whitedoverelease.com clone
+
+`sites/whitedoverelease-clone.html` is a self-contained practice clone of the front page of `whitedoverelease.com`, built autonomously — embedded CSS, no JS, no new tooling. See "Whitedoverelease.com clone" in `AGENTS.md` for details.
+
+The only thing still open is a Coolify dashboard websocket warning, worked around for now by disabling an ad blocker — fixing it properly is tied to the paused domain work above.
