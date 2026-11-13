@@ -54,9 +54,15 @@ Two subdomains of `timvnelson.com` (registered at DreamHost, which also hosts it
 - **While hunting for the DS record to remove it, the user accidentally deleted the domain's MX and TXT records** (confirmed gone via the same `cd=true` DNS-over-HTTPS trick). This broke email on `@timvnelson.com`, unrelated to the DNSSEC problem itself. DreamHost support was not yet contacted about restoring them as of this note; the email provider used for the address was not identified either — either of those would be the fastest way to fix the email side, independent of the DNSSEC fix.
 - **Decision:** wait roughly 48 hours and recheck everything (DNS, email, DNSSEC) rather than keep digging live. Whoever picks this up next should re-run the `cd=true` DNS-over-HTTPS check above before assuming anything is still broken or still fixed.
 
-### Next experiments (not started, for whenever the user wants to try them)
+### Merge conflict practice (done)
 
-- **Practice a real merge conflict on purpose** — edit the same line of a file on two branches and resolve the conflict by hand. Everything merged so far has gone cleanly, so this hasn't come up yet.
+Done as a local-only exercise, never pushed to GitHub (no lasting change to the repo). Two throwaway branches (`conflict-a`, `conflict-b`) were made from the same commit, each editing the same line of `sites/about.txt` differently, then merged into each other with plain `git merge` to produce a real conflict, resolved by hand (edit out the `<<<<<<<`/`=======`/`>>>>>>>` markers, pick or blend the final text, `git add` + `git commit`), then both branches were deleted.
+
+### Whitedoverelease.com clone (done)
+
+`sites/whitedoverelease-clone.html` is a standalone practice clone of the front page of `whitedoverelease.com` (the user's own business site) — built autonomously: the real page's content was fetched, then rewritten as a single self-contained HTML file with embedded CSS (no JS, no build tooling, no new dependencies). It does not touch `index.html`, `about.txt`, or `notes.csv`, so the CI heading check and the Coolify deploy of the main page are unaffected. Reachable at `/whitedoverelease-clone.html` on the production site, e.g. `http://a3rpxrrt2enquwxubsymwqmz.66.179.209.175.sslip.io/whitedoverelease-clone.html`. Real photos from the live site are not included — plain placeholder boxes stand in for them. Merged via pull request #14.
+
+The only open item left is the websocket quirk noted under Phase 4 above, which depends on the paused "Real domain for Coolify" work, not a standalone task.
 
 ## Git
 
