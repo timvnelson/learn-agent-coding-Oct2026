@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>White Dove Release (clone)</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Georgia, 'Times New Roman', serif;
+      color: #2c3e50;
+      background: #f7fafc;
+    }
+    a { color: inherit; }
+
+    .topbar {
+      background: #1b3a57;
+      color: #e8f1f8;
+      font-size: 0.85rem;
+      padding: 6px 20px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    header {
+      background: #ffffff;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 3px solid #cfe3f0;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .logo {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #1b3a57;
+      letter-spacing: 1px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 18px;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+    }
+    nav a { text-decoration: none; color: #1b3a57; }
+    nav a:hover { text-decoration: underline; }
+
+    .hero {
+      background: linear-gradient(180deg, #e8f1f8 0%, #ffffff 100%);
+      text-align: center;
+      padding: 60px 20px 40px;
+    }
+    .hero .cta {
+      display: inline-block;
+      background: #c9a24b;
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: 2.6rem;
+      margin: 0 0 10px;
+      color: #1b3a57;
+    }
+    .hero p {
+      font-size: 1.15rem;
+      max-width: 600px;
+      margin: 0 auto;
+      color: #4a6075;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    section h2 {
+      color: #1b3a57;
+      border-bottom: 2px solid #cfe3f0;
+      padding-bottom: 8px;
+    }
+    .photos {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 24px 0;
+    }
+    .photo-placeholder {
+      width: 260px;
+      height: 170px;
+      background: repeating-linear-gradient(45deg, #e8f1f8, #e8f1f8 10px, #ffffff 10px, #ffffff 20px);
+      border: 1px solid #cfe3f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #7b93a6;
+      font-size: 0.85rem;
+      text-align: center;
+      padding: 8px;
+    }
+
+    .closing {
+      background: #1b3a57;
+      color: #e8f1f8;
+      text-align: center;
+      padding: 50px 20px;
+    }
+    .closing h2 { color: #fff; border: none; }
+    .closing .cta {
+      display: inline-block;
+      background: #c9a24b;
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 16px;
+    }
+
+    .about-box {
+      background: #fff;
+      border: 1px solid #cfe3f0;
+      border-radius: 6px;
+      padding: 24px;
+      text-align: center;
+    }
+    .about-box .tagline {
+      font-style: italic;
+      color: #4a6075;
+      margin: 12px 0 20px;
+    }
+    .links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+    }
+
+    .faq {
+      background: #fff;
+      border: 1px solid #cfe3f0;
+      border-radius: 6px;
+      padding: 20px 24px;
+    }
+    .faq ol { padding-left: 20px; }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.85rem;
+      color: #7b93a6;
+      background: #e8f1f8;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <span>📞 626-330-2129 &nbsp;|&nbsp; office@whitedoverelease.com</span>
+    <span>Hacienda Heights, California 91745</span>
+  </div>
+
+  <header>
+    <div class="logo">White Dove Release</div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#funerals">Funerals</a></li>
+        <li><a href="#weddings">Weddings</a></li>
+        <li><a href="#special">Special Occasions</a></li>
+        <li><a href="#videos">Videos</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <a class="cta" href="#pricing">CLICK FOR DOVE PRICING</a>
+    <h1>White Dove Release</h1>
+    <p>Offering the most affordable dove releases to LA, Orange and surrounding counties since 1989.</p>
+  </section>
+
+  <section id="intro">
+    <p>
+      Few things stop a crowd the way a flock of white doves does, climbing into the sky all at once at a
+      wedding or a memorial. It is the kind of moment people compare to a dolphin leaping at Sea World, or
+      a bald eagle circling an NFL stadium before kickoff &mdash; and just like those moments, guests always
+      ask the same question afterward: how do the birds find their way back home?
+    </p>
+    <p>
+      Few animals carry deeper symbolism than a white dove. At a wedding, they represent new beginnings and
+      lasting love. At a memorial, they represent peace and a gentle farewell.
+    </p>
+  </section>
+
+  <section id="service-area">
+    <h2>Serving Los Angeles &amp; Orange County</h2>
+    <p>
+      White Dove Release serves Los Angeles and Orange Counties, along with parts of Riverside and San
+      Bernardino Counties. Release packages are available for weddings, funerals, and other special
+      occasions, along with smaller doves available in display cages.
+    </p>
+    <div class="photos">
+      <div class="photo-placeholder">photo: dove release (placeholder)</div>
+      <div class="photo-placeholder">photo: dove release (placeholder)</div>
+    </div>
+  </section>
+
+  <section id="history">
+    <h2>Our History</h2>
+    <p>
+      Since 1989, Pastor Luthor Nelson and his wife, Susie, have released white homing doves at congregation
+      events. (The birds are actually a breed of pigeon that looks like a dove.) Over the years, White Dove
+      Release has appeared at a Dodger Stadium opening day, on Good Morning America, My Fair Wedding,
+      Battle of the Wedding Designers, Semi-Homemade Wedding, and in a number of commercials and music
+      videos.
+    </p>
+  </section>
+
+  <section class="closing">
+    <h2>Make Your Event Unforgettable</h2>
+    <p>Contact us about a dove release package for your wedding, funeral, or other occasion.</p>
+    <p>Doves are a symbol of peace, faithfulness, and purity.</p>
+    <a class="cta" href="#contact">Get In Touch</a>
+  </section>
+
+  <section id="about">
+    <div class="about-box">
+      <div class="logo">White Dove Release</div>
+      <h2 style="border:none;">About White Dove Release</h2>
+      <p>
+        Since 1989, WDR has serviced Los Angeles County, Orange County and the surrounding counties with
+        affordable dove releases and displays.
+      </p>
+      <p class="tagline">Make your event memorable with the beauty of a white dove release ceremony.</p>
+      <div class="links">
+        <a href="#updates">&rarr; Click for Tim Updates</a>
+        <a href="#service-area">Service Areas in Los Angeles &amp; Orange County</a>
+        <a href="#privacy">Privacy Policy</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact White Dove Release</h2>
+    <p>
+      For the fastest service, call us directly. Outside business hours, a 24/7 answering service can take
+      your call, or reach out by email any time.
+    </p>
+    <div class="faq">
+      <p><strong>Top 3 Brief FAQ's</strong></p>
+      <ol>
+        <li>The starting package is for 20 doves.</li>
+        <li>Pricing is listed on this site.</li>
+        <li>
+          Doves fly back to their home base, so releases are limited to Los Angeles, Orange, and parts of
+          surrounding counties. Outside those areas, we will try to refer you elsewhere.
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <footer>
+    Copyright White Dove Release, Inc. &mdash; practice clone built for a learning project, not the real site.
+  </footer>
+
+</body>
+</html>
